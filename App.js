@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Vibration } from 'react-native';
 
 class App extends React.Component {
 
@@ -25,69 +25,69 @@ class App extends React.Component {
         </View>
         <View style={styles.buttonContainer}>
           <View style={styles.buttonLine}>
-            <TouchableOpacity style={[styles.button, {flex: 2}, styles.operand]} onPress={() => console.log('on press button')} >
+            <TouchableOpacity style={[styles.button, {flex: 2}, styles.operand]} onPress={() => Vibration.vibrate(20)} >
               <Text style={styles.operandColor}>CLEAR</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.button, styles.operand]} onPress={() => console.log('on press button')} >
+            <TouchableOpacity style={[styles.button, styles.operand]} onPress={() => Vibration.vibrate(20)} >
               <Text style={styles.operandColor}>%</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.button, styles.operand]} onPress={() => console.log('on press button')} >
+            <TouchableOpacity style={[styles.button, styles.operand]} onPress={() => Vibration.vibrate(20)} >
               <Text style={styles.operandColor}>÷</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.buttonLine}>
-            <TouchableOpacity style={styles.button} onPress={() => console.log('on press button')} >
+            <TouchableOpacity style={styles.button} onPress={() => Vibration.vibrate(20)} >
               <Text style={styles.numberColor}>7</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => console.log('on press button')} >
+            <TouchableOpacity style={styles.button} onPress={() => Vibration.vibrate(20)} >
               <Text style={styles.numberColor}>8</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => console.log('on press button')} >
+            <TouchableOpacity style={styles.button} onPress={() => Vibration.vibrate(20)} >
               <Text style={styles.numberColor}>9</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.button, styles.operand]} onPress={() => console.log('on press button')} >
+            <TouchableOpacity style={[styles.button, styles.operand]} onPress={() => Vibration.vibrate(20)} >
               <Text style={styles.operandColor}>x</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.buttonLine}>
-            <TouchableOpacity style={styles.button} onPress={() => console.log('on press button')} >
+            <TouchableOpacity style={styles.button} onPress={() => Vibration.vibrate(20)} >
               <Text style={styles.numberColor}>4</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => console.log('on press button')} >
+            <TouchableOpacity style={styles.button} onPress={() => Vibration.vibrate(20)} >
               <Text style={styles.numberColor}>5</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => console.log('on press button')} >
+            <TouchableOpacity style={styles.button} onPress={() => Vibration.vibrate(20)} >
               <Text style={styles.numberColor}>6</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.button, styles.operand]} onPress={() => console.log('on press button')} >
+            <TouchableOpacity style={[styles.button, styles.operand]} onPress={() => Vibration.vibrate(20)} >
               <Text style={styles.operandColor}>-</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.buttonLine}>
-            <TouchableOpacity style={styles.button} onPress={() => console.log('on press button')} >
+            <TouchableOpacity style={styles.button} onPress={() => Vibration.vibrate(20)} >
               <Text style={styles.numberColor}>1</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => console.log('on press button')} >
+            <TouchableOpacity style={styles.button} onPress={() => Vibration.vibrate(20)} >
               <Text style={styles.numberColor}>2</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => console.log('on press button')} >
+            <TouchableOpacity style={styles.button} onPress={() => Vibration.vibrate(20)} >
               <Text style={styles.numberColor}>3</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.button, styles.operand]} onPress={() => console.log('on press button')} >
+            <TouchableOpacity style={[styles.button, styles.operand]} onPress={() => Vibration.vibrate(20)} >
               <Text style={styles.operandColor}>+</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.buttonLine}>
-            <TouchableOpacity style={styles.button} onPress={() => console.log('on press button')} >
+            <TouchableOpacity style={styles.button} onPress={() => Vibration.vibrate(20)} >
               <Text style={styles.numberColor}>0</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => console.log('on press button')} >
+            <TouchableOpacity style={styles.button} onPress={() => Vibration.vibrate(20)} >
               <Text style={styles.numberColor}>00</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => console.log('on press button')} >
+            <TouchableOpacity style={styles.button} onPress={() => Vibration.vibrate(20)} >
               <Text style={styles.numberColor}>,</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.button, styles.operand]} onPress={() => console.log('on press button')} >
+            <TouchableOpacity style={[styles.button, styles.operand]} onPress={() => Vibration.vibrate(20)} >
               <Text style={styles.operandColor}>=</Text>
             </TouchableOpacity>
           </View>
