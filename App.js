@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Vibration } from 'react-native';
+import Icon from 'react-native-vector-icons/Feather';
 
 class App extends React.Component {
 
@@ -14,14 +15,19 @@ class App extends React.Component {
     return(
       <View style={styles.container}>
         <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.textinput}
-            defaultValue="0"
-            textAlign="right"
-            showSoftInputOnFocus={false}
-            onChangeText={text => console.log(text)}
-            onSubmitEditing={() => console.log('on submit')}
-          />
+          <View>
+            <TextInput
+              style={styles.textinput}
+              defaultValue="0"
+              textAlign="right"
+              showSoftInputOnFocus={false}
+              onChangeText={text => console.log(text)}
+              onSubmitEditing={() => console.log('on submit')}
+            />
+          </View>
+          <TouchableOpacity onPress={() => Vibration.vibrate(20)} >
+            <Icon name="delete" size={25} style={{marginBottom: 12,marginHorizontal: 6}} />
+          </TouchableOpacity>
         </View>
         <View style={styles.buttonContainer}>
           <View style={styles.buttonLine}>
@@ -103,17 +109,18 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   inputContainer: {
-    height: '25%',
-    justifyContent: "flex-end"
+    flex: 2,
+    flexDirection: "row",
+    justifyContent: "flex-end",
+    alignItems: "flex-end"
   },
   textinput: {
-    marginTop: '10%',
     fontSize: 40,
     fontFamily: "sans-serif-light",
     color: "#303030"
   },
   buttonContainer: {
-    flex: 1,
+    flex: 6,
   },
   buttonLine: {
     flex:1,
