@@ -7,30 +7,60 @@ class App extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      text: ""
+      operand_1: "",
+      operand_2: "",
+      operation: "",
     }
   }
 
   _writeNumber(charNumber) {
+    if(this.state.operation.length == 0){
+      this.setState({
+        operand_1: this.state.operand_1.concat(charNumber)
+      })
+    }else if(this.state.operation.length == 1) {
+      this.setState({
+        operand_2: this.state.operand_2.concat(charNumber)
+      })
+    }
+  }
+
+  _setOperation(theOperation) {
     this.setState({
-      text: this.state.text.concat(charNumber)
+      operation: theOperation == "=" ? this.state.operation : theOperation,
+      operand_1: this.state.operand_2 != "" ? this._result(this.state.operand_1, this.state.operand_2) : this.state.operand_1,
+      operand_2: ""
     })
   }
 
   _removeTheLastNumber() {
-    if(this.state.text.length == 0){
+    if(this.state.operand_1.length == 0){
       return
     }else{
       this.setState({
-        text: this.state.text.slice(0, -1)
+        operand_1: this.state.operand_1.slice(0, -1)
       })
     }
   }
 
   _clear() {
     this.setState({
-      text: ""
+      operand_1: "",
+      operand_2: "",
+      operation: "",
     })
+  }
+
+  _result(number1 , number2) {
+    if(this.state.operation == "+"){
+      return (parseFloat(number1) + parseFloat(number2)).toString()
+    }else if(this.state.operation == "-"){
+      return (parseFloat(number1) - parseFloat(number2)).toString()
+    }else if(this.state.operation == "x"){
+      return (parseFloat(number1) * parseFloat(number2)).toString()
+    }else if(this.state.operation == "/"){
+      return (parseFloat(number1) / parseFloat(number2)).toString()
+    }
   }
 
   render(){
@@ -40,7 +70,7 @@ class App extends React.Component {
           <View>
             <TextInput
               style={styles.textinput}
-              value={this.state.text.length == 0 ? "0" : this.state.text}
+              value={ this.state.operand_2.length == 0 ? (this.state.operand_1.length == 0 ? "0" : this.state.operand_1) : this.state.operand_2 }
               textAlign="right"
               showSoftInputOnFocus={false}
               onChangeText={text => console.log(text)}
@@ -53,14 +83,14 @@ class App extends React.Component {
         </View>
         <View style={styles.buttonContainer}>
           <View style={styles.buttonLine}>
-            <TouchableOpacity style={[styles.button, {flex: 2}, styles.operand]} onPress={() => {Vibration.vibrate(20), this._clear()} } >
-              <Text style={styles.operandColor}>CLEAR</Text>
+            <TouchableOpacity style={[styles.button, {flex: 2}, styles.operation]} onPress={() => {Vibration.vibrate(20), this._clear()} } >
+              <Text style={styles.operationColor}>CLEAR</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.button, styles.operand]} onPress={() => Vibration.vibrate(20)} >
-              <Text style={styles.operandColor}>%</Text>
+            <TouchableOpacity style={[styles.button, styles.operation]} onPress={() => Vibration.vibrate(20)} >
+              <Text style={styles.operationColor}>%</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.button, styles.operand]} onPress={() => Vibration.vibrate(20)} >
-              <Text style={styles.operandColor}>÷</Text>
+            <TouchableOpacity style={[styles.button, styles.operation]} onPress={() => {Vibration.vibrate(20), this._setOperation("/") } } >
+              <Text style={styles.operationColor}>÷</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.buttonLine}>
@@ -73,8 +103,8 @@ class App extends React.Component {
             <TouchableOpacity style={styles.button} onPress={() => {Vibration.vibrate(20); this._writeNumber("9")} } >
               <Text style={styles.numberColor}>9</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.button, styles.operand]} onPress={() => Vibration.vibrate(20)} >
-              <Text style={styles.operandColor}>x</Text>
+            <TouchableOpacity style={[styles.button, styles.operation]} onPress={() => {Vibration.vibrate(20), this._setOperation("x") } } >
+              <Text style={styles.operationColor}>x</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.buttonLine}>
@@ -87,8 +117,8 @@ class App extends React.Component {
             <TouchableOpacity style={styles.button} onPress={() => {Vibration.vibrate(20); this._writeNumber("6")} } >
               <Text style={styles.numberColor}>6</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.button, styles.operand]} onPress={() => Vibration.vibrate(20)} >
-              <Text style={styles.operandColor}>-</Text>
+            <TouchableOpacity style={[styles.button, styles.operation]} onPress={() => {Vibration.vibrate(20), this._setOperation("-") } } >
+              <Text style={styles.operationColor}>-</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.buttonLine}>
@@ -101,8 +131,8 @@ class App extends React.Component {
             <TouchableOpacity style={styles.button} onPress={() => {Vibration.vibrate(20); this._writeNumber("3")} } >
               <Text style={styles.numberColor}>3</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.button, styles.operand]} onPress={() => Vibration.vibrate(20)} >
-              <Text style={styles.operandColor}>+</Text>
+            <TouchableOpacity style={[styles.button, styles.operation]} onPress={() => {Vibration.vibrate(20), this._setOperation("+") } } >
+              <Text style={styles.operationColor}>+</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.buttonLine}>
@@ -115,8 +145,8 @@ class App extends React.Component {
             <TouchableOpacity style={styles.button} onPress={() => {Vibration.vibrate(20); this._writeNumber(",")} } >
               <Text style={styles.numberColor}>,</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.button, styles.operand]} onPress={() => Vibration.vibrate(20)} >
-              <Text style={styles.operandColor}>=</Text>
+            <TouchableOpacity style={[styles.button, styles.operation]} onPress={() => {Vibration.vibrate(20), this._setOperation("=")} } >
+              <Text style={styles.operationColor}>=</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -154,10 +184,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     margin: 0.4,
   },
-  operand: {
+  operation: {
     backgroundColor: "#3D51B4",
   },
-  operandColor: {
+  operationColor: {
     color: "#fff",
     fontSize: 30,
     fontFamily: "sans-serif-light"
