@@ -50,7 +50,7 @@ class App extends React.Component {
   }
 
   _setOperation(theOperation) {
-    if(this.state.operand_1 != ""){
+    if(this.state.operand_1 != ""){ // prevent the case when the user choose first an operation then a number and click equal
       this.setState({
         operation: theOperation == "=" ? this.state.operation : theOperation,
         operand_1: this.state.operand_2 != "" ? this._result(this.state.operand_1, this.state.operand_2) : this.state.operand_1,
