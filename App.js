@@ -23,7 +23,7 @@ class App extends React.Component {
         this.setState({
           operand_1: "0."
         })
-      }else if(this.state.operand_1.includes(".") && charNumber == "."){
+      }else if((this.state.operand_1.includes(".") && charNumber == ".") || this.state.operand_1.length == 14){
 
       }else{
         this.setState({
@@ -39,7 +39,7 @@ class App extends React.Component {
         this.setState({
           operand_2: "0."
         })
-      }else if(this.state.operand_1.includes(".") && charNumber == "."){
+      }else if((this.state.operand_1.includes(".") && charNumber == ".") || this.state.operand_2.length == 14){
         
       }else{
         this.setState({
