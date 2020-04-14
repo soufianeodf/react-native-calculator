@@ -50,11 +50,13 @@ class App extends React.Component {
   }
 
   _setOperation(theOperation) {
-    this.setState({
-      operation: theOperation == "=" ? this.state.operation : theOperation,
-      operand_1: this.state.operand_2 != "" ? this._result(this.state.operand_1, this.state.operand_2) : this.state.operand_1,
-      operand_2: ""
-    })
+    if(this.state.operand_1 != ""){
+      this.setState({
+        operation: theOperation == "=" ? this.state.operation : theOperation,
+        operand_1: this.state.operand_2 != "" ? this._result(this.state.operand_1, this.state.operand_2) : this.state.operand_1,
+        operand_2: ""
+      })
+    }
   }
 
   _removeTheLastNumber() {
@@ -83,6 +85,9 @@ class App extends React.Component {
     }else if(this.state.operation == "x"){
       return (parseFloat(number1) * parseFloat(number2)).toString().substring(0,15)
     }else if(this.state.operation == "/"){
+      if(this.state.operand_2 == "0."){
+        return "0"
+      }
       return (parseFloat(number1) / parseFloat(number2)).toString().substring(0,15)
     }
   }
