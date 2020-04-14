@@ -15,13 +15,37 @@ class App extends React.Component {
 
   _writeNumber(charNumber) {
     if(this.state.operation.length == 0){
-      this.setState({
-        operand_1: this.state.operand_1.concat(charNumber)
-      })
+      if(this.state.operand_1 == "" && (charNumber == "0" || charNumber == "00")){ // to begin always the number without a zero
+        this.setState({
+          operand_1: ""
+        })
+      }else if((this.state.operand_1 == "" && charNumber == ".") || (this.state.operand_1 == "0." && charNumber == ".")){ // for not begin the number with a point or 0...  
+        this.setState({
+          operand_1: "0."
+        })
+      }else if(this.state.operand_1.includes(".") && charNumber == "."){
+
+      }else{
+        this.setState({
+          operand_1: this.state.operand_1.concat(charNumber)
+        })
+      }
     }else if(this.state.operation.length == 1) {
-      this.setState({
-        operand_2: this.state.operand_2.concat(charNumber)
-      })
+      if(this.state.operand_2 == "" && (charNumber == "0" || charNumber == "00")){
+        this.setState({
+          operand_2: ""
+        })
+      }else if((this.state.operand_2 == "" && charNumber == ".") || (this.state.operand_2 == "0." && charNumber == ".")){
+        this.setState({
+          operand_2: "0."
+        })
+      }else if(this.state.operand_1.includes(".") && charNumber == "."){
+        
+      }else{
+        this.setState({
+          operand_2: this.state.operand_2.concat(charNumber)
+        })
+      }
     }
   }
 
@@ -53,13 +77,13 @@ class App extends React.Component {
 
   _result(number1 , number2) {
     if(this.state.operation == "+"){
-      return (parseFloat(number1) + parseFloat(number2)).toString()
+      return (parseFloat(number1) + parseFloat(number2)).toString().substring(0,15)
     }else if(this.state.operation == "-"){
-      return (parseFloat(number1) - parseFloat(number2)).toString()
+      return (parseFloat(number1) - parseFloat(number2)).toString().substring(0,15)
     }else if(this.state.operation == "x"){
-      return (parseFloat(number1) * parseFloat(number2)).toString()
+      return (parseFloat(number1) * parseFloat(number2)).toString().substring(0,15)
     }else if(this.state.operation == "/"){
-      return (parseFloat(number1) / parseFloat(number2)).toString()
+      return (parseFloat(number1) / parseFloat(number2)).toString().substring(0,15)
     }
   }
 
@@ -142,7 +166,7 @@ class App extends React.Component {
             <TouchableOpacity style={styles.button} onPress={() => {Vibration.vibrate(20); this._writeNumber("00")} } >
               <Text style={styles.numberColor}>00</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => {Vibration.vibrate(20); this._writeNumber(",")} } >
+            <TouchableOpacity style={styles.button} onPress={() => {Vibration.vibrate(20); this._writeNumber(".")} } >
               <Text style={styles.numberColor}>,</Text>
             </TouchableOpacity>
             <TouchableOpacity style={[styles.button, styles.operation]} onPress={() => {Vibration.vibrate(20), this._setOperation("=")} } >
