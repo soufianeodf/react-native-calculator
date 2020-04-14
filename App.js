@@ -15,7 +15,7 @@ class App extends React.Component {
 
   _writeNumber(charNumber) {
     if(this.state.operation.length == 0){
-      if(this.state.operand_1 == "" && (charNumber == "0" || charNumber == "00")){ // to begin always the number without a zero
+      if((this.state.operand_1 == "" || this.state.operand_1 == "0") && (charNumber == "0" || charNumber == "00")){ // to begin always the number without a zero
         this.setState({
           operand_1: ""
         })
@@ -31,7 +31,7 @@ class App extends React.Component {
         })
       }
     }else if(this.state.operation.length == 1) {
-      if(this.state.operand_2 == "" && (charNumber == "0" || charNumber == "00")){
+      if((this.state.operand_2 == "" || this.state.operand_2 == "0") && (charNumber == "0" || charNumber == "00")){
         this.setState({
           operand_2: ""
         })
