@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Vibration } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+import { numberFormat } from './helpers/helpers';
 
 class App extends React.Component {
 
@@ -23,7 +24,7 @@ class App extends React.Component {
         this.setState({
           operand_1: "0."
         })
-      }else if((this.state.operand_1.includes(".") && charNumber == ".") || this.state.operand_1.length == 14){
+      }else if((this.state.operand_1.includes(".") && charNumber == ".") || this.state.operand_1.length == 13){
 
       }else{
         this.setState({
@@ -39,7 +40,7 @@ class App extends React.Component {
         this.setState({
           operand_2: "0."
         })
-      }else if((this.state.operand_1.includes(".") && charNumber == ".") || this.state.operand_2.length == 14){
+      }else if((this.state.operand_2.includes(".") && charNumber == ".") || this.state.operand_2.length == 13){
         
       }else{
         this.setState({
@@ -79,16 +80,16 @@ class App extends React.Component {
 
   _result(number1 , number2) {
     if(this.state.operation == "+"){
-      return (parseFloat(number1) + parseFloat(number2)).toString().substring(0,15)
+      return (parseFloat(number1) + parseFloat(number2)).toString().substring(0,14)
     }else if(this.state.operation == "-"){
-      return (parseFloat(number1) - parseFloat(number2)).toString().substring(0,15)
+      return (parseFloat(number1) - parseFloat(number2)).toString().substring(0,14)
     }else if(this.state.operation == "x"){
-      return (parseFloat(number1) * parseFloat(number2)).toString().substring(0,15)
+      return (parseFloat(number1) * parseFloat(number2)).toString().substring(0,14)
     }else if(this.state.operation == "/"){
       if(this.state.operand_2 == "0."){
         return "0"
       }
-      return (parseFloat(number1) / parseFloat(number2)).toString().substring(0,15)
+      return (parseFloat(number1) / parseFloat(number2)).toString().substring(0,14)
     }
   }
 
@@ -99,7 +100,7 @@ class App extends React.Component {
           <View>
             <TextInput
               style={styles.textinput}
-              value={ this.state.operand_2.length == 0 ? (this.state.operand_1.length == 0 ? "0" : this.state.operand_1) : this.state.operand_2 }
+              value={ this.state.operand_2.length == 0 ? (this.state.operand_1.length == 0 ? "0" : numberFormat(this.state.operand_1, 3) ) : numberFormat(this.state.operand_2, 3) }
               textAlign="right"
               showSoftInputOnFocus={false}
               onChangeText={text => console.log(text)}
