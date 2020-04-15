@@ -80,16 +80,16 @@ class App extends React.Component {
 
   _result(number1 , number2) {
     if(this.state.operation == "+"){
-      return (parseFloat(number1) + parseFloat(number2)).toString().substring(0,14)
+      return (parseFloat(number1) + parseFloat(number2)).toString().substring(0,13)
     }else if(this.state.operation == "-"){
-      return (parseFloat(number1) - parseFloat(number2)).toString().substring(0,14)
+      return (parseFloat(number1) - parseFloat(number2)).toString().substring(0,13)
     }else if(this.state.operation == "x"){
-      return (parseFloat(number1) * parseFloat(number2)).toString().substring(0,14)
+      return (parseFloat(number1) * parseFloat(number2)).toString().substring(0,13)
     }else if(this.state.operation == "/"){
       if(this.state.operand_2 == "0."){
         return "0"
       }
-      return (parseFloat(number1) / parseFloat(number2)).toString().substring(0,14)
+      return (parseFloat(number1) / parseFloat(number2)).toString().substring(0,13)
     }
   }
 
