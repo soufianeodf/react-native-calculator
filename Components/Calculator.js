@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Vibration } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Vibration, Button } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { numberFormat } from '../helpers/helpers';
 
@@ -97,6 +97,9 @@ class Calculator extends React.Component {
     return(
       <View style={styles.container}>
         <View style={styles.inputContainer}>
+         <TouchableOpacity onPress={() => this.props.navigation.toggleDrawer()} style={{position: "absolute", top: 8, left: 20}} >
+            <Text style={{fontSize: 32}}>...</Text>
+          </TouchableOpacity>
           <View>
             <TextInput
               style={styles.textinput}
