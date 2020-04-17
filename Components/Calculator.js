@@ -7,6 +7,8 @@ class Calculator extends React.Component {
 
   constructor(props){
     super(props)
+    this.operations = ['x', '-', '+', '='];
+    this.numbers = [ ['7', '8', '9'], ['4', '5', '6'], ['1', '2', '3'], ['0', '00', '.']];
     this.state = {
       operand_1: "",
       operand_2: "",
@@ -126,62 +128,26 @@ class Calculator extends React.Component {
               <Text style={styles.operationColor}>÷</Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.buttonLine}>
-            <TouchableOpacity style={styles.button} onPress={() => {Vibration.vibrate(20); this._writeNumber("7")} } >
-              <Text style={styles.numberColor}>7</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => {Vibration.vibrate(20); this._writeNumber("8")} } >
-              <Text style={styles.numberColor}>8</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => {Vibration.vibrate(20); this._writeNumber("9")} } >
-              <Text style={styles.numberColor}>9</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={[styles.button, styles.operation]} onPress={() => {Vibration.vibrate(20), this._setOperation("x") } } >
-              <Text style={styles.operationColor}>x</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.buttonLine}>
-            <TouchableOpacity style={styles.button} onPress={() => {Vibration.vibrate(20); this._writeNumber("4")} } >
-              <Text style={styles.numberColor}>4</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => {Vibration.vibrate(20); this._writeNumber("5")} } >
-              <Text style={styles.numberColor}>5</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => {Vibration.vibrate(20); this._writeNumber("6")} } >
-              <Text style={styles.numberColor}>6</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={[styles.button, styles.operation]} onPress={() => {Vibration.vibrate(20), this._setOperation("-") } } >
-              <Text style={styles.operationColor}>-</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.buttonLine}>
-            <TouchableOpacity style={styles.button} onPress={() => {Vibration.vibrate(20); this._writeNumber("1")} } >
-              <Text style={styles.numberColor}>1</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => {Vibration.vibrate(20); this._writeNumber("2")} } >
-              <Text style={styles.numberColor}>2</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => {Vibration.vibrate(20); this._writeNumber("3")} } >
-              <Text style={styles.numberColor}>3</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={[styles.button, styles.operation]} onPress={() => {Vibration.vibrate(20), this._setOperation("+") } } >
-              <Text style={styles.operationColor}>+</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.buttonLine}>
-            <TouchableOpacity style={styles.button} onPress={() => {Vibration.vibrate(20); this._writeNumber("0")} } >
-              <Text style={styles.numberColor}>0</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => {Vibration.vibrate(20); this._writeNumber("00")} } >
-              <Text style={styles.numberColor}>00</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => {Vibration.vibrate(20); this._writeNumber(".")} } >
-              <Text style={styles.numberColor}>,</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={[styles.button, styles.operation]} onPress={() => {Vibration.vibrate(20), this._setOperation("=")} } >
-              <Text style={styles.operationColor}>=</Text>
-            </TouchableOpacity>
-          </View>
+          {
+            this.operations.map((value, index) => {
+                return(
+                    <View style={styles.buttonLine}>
+                        <TouchableOpacity style={styles.button} onPress={() => {Vibration.vibrate(20); this._writeNumber(this.numbers[index][0])} } >
+                        <Text style={styles.numberColor}>{this.numbers[index][0]}</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.button} onPress={() => {Vibration.vibrate(20); this._writeNumber(this.numbers[index][1])} } >
+                        <Text style={styles.numberColor}>{this.numbers[index][1]}</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.button} onPress={() => {Vibration.vibrate(20); this._writeNumber(this.numbers[index][2])} } >
+                        <Text style={styles.numberColor}>{this.numbers[index][2] == '.' ? ',' : this.numbers[index][2]}</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={[styles.button, styles.operation]} onPress={() => {Vibration.vibrate(20), this._setOperation(value) } } >
+                        <Text style={styles.operationColor}>{value}</Text>
+                        </TouchableOpacity>
+                    </View>
+                );
+            })
+          }
         </View>
       </View>
     );
