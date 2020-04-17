@@ -99,7 +99,7 @@ class Calculator extends React.Component {
     return(
       <View style={styles.container}>
         <View style={styles.inputContainer}>
-         <TouchableOpacity onPress={() => this.props.navigation.toggleDrawer()} style={{position: "absolute", top: 8, left: 20}} >
+          <TouchableOpacity onPress={() => this.props.navigation.toggleDrawer()} style={styles.toggleDrawerButton} >
             <Text style={{fontSize: 32}}>...</Text>
           </TouchableOpacity>
           <View>
@@ -118,7 +118,7 @@ class Calculator extends React.Component {
         </View>
         <View style={styles.buttonContainer}>
           <View style={styles.buttonLine}>
-            <TouchableOpacity style={[styles.button, {flex: 2}, styles.operation]} onPress={() => {Vibration.vibrate(20), this._clear()} } >
+            <TouchableOpacity style={[styles.button, styles.operation, {flex: 2}]} onPress={() => {Vibration.vibrate(20), this._clear()} } >
               <Text style={styles.operationColor}>CLEAR</Text>
             </TouchableOpacity>
             <TouchableOpacity style={[styles.button, styles.operation]} onPress={() => Vibration.vibrate(20)} >
@@ -164,6 +164,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "flex-end",
     alignItems: "flex-end"
+  },
+  toggleDrawerButton: {
+    position: "absolute", 
+    top: 8, 
+    left: 20
   },
   textinput: {
     fontSize: 40,
