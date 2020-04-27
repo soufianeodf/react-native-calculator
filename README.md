@@ -16,8 +16,8 @@ An expo calculator app created with React Native.
 
 1. Install expo Application from AppStore or PlayStore on your iOS/Android device.
 2. Go to this link [https://expo.io/@soufianeodf/Calculator](https://expo.io/@soufianeodf/Calculator)
-3. Scan the QR Code with your phone.<br/>
-<br/>
+3. Scan the QR Code with your phone.
+
   ![Markdown Logo](assets/qr-code.png)
 
 4. And then the application will automatically start.
