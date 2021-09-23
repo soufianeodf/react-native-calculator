@@ -6,11 +6,9 @@
 An expo calculator app created with React Native.
 
 # Libraries Used
-[React Native](https://github.com/facebook/react-native)
-
-[React Navigation](https://reactnavigation.org/)
-
-[React-Native-vector-icons](https://github.com/oblador/react-native-vector-icons)
+* [React Native](https://github.com/facebook/react-native)
+* [React Navigation](https://reactnavigation.org/)
+* [React-Native-vector-icons](https://github.com/oblador/react-native-vector-icons)
 
 # How to try this Application
 
@@ -18,7 +16,7 @@ An expo calculator app created with React Native.
 2. Go to this link [https://expo.io/@soufianeodf/Calculator](https://expo.io/@soufianeodf/Calculator)
 3. Scan the QR Code with your phone.
 
-  ![Markdown Logo](assets/qr-code.png)
+    ![Markdown Logo](assets/qr-code.png)
 
 4. And then the application will automatically start.
 
