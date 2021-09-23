@@ -12,7 +12,7 @@ An expo calculator app created with React Native.
 
 # How to try this Application
 
-1. Install expo Application from AppStore or PlayStore on your iOS/Android device.
+1. Install expo Application from [AppStore](https://apps.apple.com/us/app/expo-go/id982107779) or [PlayStore](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en&gl=US) on your iOS/Android device.
 2. Go to this link [https://expo.io/@soufianeodf/Calculator](https://expo.io/@soufianeodf/Calculator)
 3. Scan the QR Code with your phone.
 
